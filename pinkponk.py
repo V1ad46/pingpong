@@ -33,12 +33,12 @@ class Player(GameSprite):
 
 
 #игровая сцена:
-back = (200, 255, 255) #цвет фона (background)
+back = "324.jpg" #цвет фона (background)
 win_width = 600
 win_height = 500
-window = display.set_mode((win_width, win_height))
-window.fill(back)
 
+window = display.set_mode((win_width, win_height))
+background = transform.scale(image.load(back), (win_width, win_height))
 
 #флаги, отвечающие за состояние игры
 game = True
@@ -59,8 +59,8 @@ lose1 = font.render('PLAYER 1 БОТ!', True, (180, 0, 0))
 lose2 = font.render('PLAYER 2 БОТ!', True, (180, 0, 0))
 
 
-speed_x = 3
-speed_y = 3
+speed_x = 4
+speed_y = 4
 
 
 while game:
@@ -69,7 +69,7 @@ while game:
            game = False
   
    if finish != True:
-       window.fill(back)
+       window.blit(background,(0,0))
        racket1.update_l()
        racket2.update_r()
        ball.rect.x += speed_x
